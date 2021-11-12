@@ -1,0 +1,10 @@
+
+=== Fri Nov 12 13:31:07 2021
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.2d.animation from version 5.0.9 to 6.0.1
+  com.unity.2d.psdimporter from version 4.1.2 to 5.0.1
+  com.unity.2d.spriteshape from version 5.1.5 to 6.0.0
