@@ -1,7 +1,9 @@
-using Ui;
+using Ui.MainMenu;
 using Game;
 using Profile;
 using UnityEngine;
+using UI.SettingsMenu;
+using Features.Inventory;
 
 internal class MainController : BaseController
 {
@@ -9,7 +11,9 @@ internal class MainController : BaseController
     private readonly ProfilePlayer _profilePlayer;
 
     private MainMenuController _mainMenuController;
+    private SettingsMenuController _settingsMenuController;
     private GameController _gameController;
+    private InventoryController _invenoryController;
 
 
     public MainController(Transform placeForUi, ProfilePlayer profilePlayer)
@@ -25,6 +29,8 @@ internal class MainController : BaseController
     {
         _mainMenuController?.Dispose();
         _gameController?.Dispose();
+        _settingsMenuController?.Dispose();
+        _invenoryController?.Dispose();
 
         _profilePlayer.CurrentState.UnSubscribeOnChange(OnChangeGameState);
     }
@@ -37,14 +43,32 @@ internal class MainController : BaseController
             case GameState.Start:
                 _mainMenuController = new MainMenuController(_placeForUi, _profilePlayer);
                 _gameController?.Dispose();
+                _settingsMenuController?.Dispose();
+                _invenoryController?.Dispose();
+                break;
+            case GameState.Settings:
+                _settingsMenuController = new SettingsMenuController(_placeForUi, _profilePlayer);
+                _mainMenuController?.Dispose();
+                _gameController?.Dispose();
+                _invenoryController?.Dispose();
                 break;
             case GameState.Game:
                 _gameController = new GameController(_profilePlayer);
                 _mainMenuController?.Dispose();
+                _settingsMenuController?.Dispose();
+                _invenoryController?.Dispose();
+                break;
+            case GameState.Inventory:
+                _invenoryController = new InventoryController(_placeForUi, _profilePlayer.InventoryModel);
+                _mainMenuController?.Dispose();
+                _gameController?.Dispose();
+                _settingsMenuController?.Dispose();
                 break;
             default:
                 _mainMenuController?.Dispose();
                 _gameController?.Dispose();
+                _settingsMenuController?.Dispose();
+                _invenoryController?.Dispose();
                 break;
         }
     }
