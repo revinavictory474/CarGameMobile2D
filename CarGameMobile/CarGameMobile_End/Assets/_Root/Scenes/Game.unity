@@ -369,6 +369,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1681445465}
+  - component: {fileID: 1681445467}
+  - component: {fileID: 1681445466}
   m_Layer: 0
   m_Name: Services
   m_TagString: Untagged
@@ -393,6 +395,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1681445466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681445464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672745488a6c9f947b21b35128b4eddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1681445467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681445464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac0673b2430a8e4ab94890a37f5f249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adsService: {fileID: 1742536084}
+  _iapService: {fileID: 1008459012}
+  _analyticsManager: {fileID: 1966569044}
 --- !u!1 &1742536082
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,6 +625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1f1f3a311c471e921b56ebcc0f1a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speedCar: 0
+  _initialState: 0
+  _transportType: 0
   _placeForUi: {fileID: 1903552}
-  _adsService: {fileID: 1742536084}
-  _analytics: {fileID: 1966569044}

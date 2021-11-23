@@ -10,57 +10,49 @@ namespace Features.Inventory
 {
     internal interface IInventoryController
     {
-
     }
 
     internal class InventoryController : BaseController, IInventoryController
     {
-        private readonly ResourcePath _viewPath = new ResourcePath("Prefabs/Inventory/InventoryView");
-        private readonly ResourcePath _dataSourcePath = new ResourcePath("Configs/Inventory/ItemConfigDataSource");
-
-        private readonly InventoryView _view;
+        private readonly IInventoryView _view;
         private readonly IInventoryModel _model;
-        private readonly ItemsRepository _repository;
+        private readonly IItemsRepository _repository;
 
-        public InventoryController([NotNull] Transform placeForUi, [NotNull] IInventoryModel inventoryModel)
+
+        public InventoryController(
+            [NotNull] IInventoryView inventoryView,
+            [NotNull] IInventoryModel inventoryModel,
+            [NotNull] IItemsRepository itemsRepository)
         {
-            if (placeForUi == null)
-                throw new ArgumentNullException(nameof(placeForUi));
+            _view
+                = inventoryView ?? throw new ArgumentNullException(nameof(inventoryView));
 
-            _model = inventoryModel ?? throw new ArgumentNullException(nameof(inventoryModel));
+            _model
+                = inventoryModel ?? throw new ArgumentNullException(nameof(inventoryModel));
 
-            _repository = CreateRepository();
-            _view = LoadView(placeForUi);
+            _repository
+                = itemsRepository ?? throw new ArgumentNullException(nameof(itemsRepository));
 
             _view.Display(_repository.Items.Values, OnItemClicked);
+            InitSelectedItems(_model.EquippedItems);
+        }
 
-            foreach (string itemId in _model.EquippedItems)
-            {
+        private void InitSelectedItems(IEnumerable<string> selectedItemsId)
+        {
+            foreach (string itemId in selectedItemsId)
                 _view.Select(itemId);
-            }
         }
 
-        private ItemsRepository CreateRepository()
+        protected override void OnDispose()
         {
-            ItemConfig[] itemConfigs = ContentDataSourceLoader.LoadItemConfigs(_dataSourcePath);
-            var repository = new ItemsRepository(itemConfigs);
-            AddRepository(repository);
-
-            return repository;
+            _view.Clear();
+            base.OnDispose();
         }
 
-        private InventoryView LoadView(Transform placeForUi)
-        {
-            GameObject prefab = ResourcesLoader.LoadPrefab(_viewPath);
-            GameObject objectView = Object.Instantiate(prefab, placeForUi);
-            AddGameObject(objectView);
-
-            return objectView.GetComponent<InventoryView>();
-        }
 
         private void OnItemClicked(string itemId)
         {
-            bool equipped = _model.isEquipped(itemId);
+            bool equipped = _model.IsEquipped(itemId);
 
             if (equipped)
                 UnequipItem(itemId);
@@ -76,7 +68,7 @@ namespace Features.Inventory
 
         private void UnequipItem(string itemId)
         {
-            _view.UnSelect(itemId);
+            _view.Unselect(itemId);
             _model.UnequipItem(itemId);
         }
     }

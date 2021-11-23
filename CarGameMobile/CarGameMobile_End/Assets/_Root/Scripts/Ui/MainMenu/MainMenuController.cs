@@ -1,4 +1,5 @@
 using Profile;
+using Services;
 using Tool;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -16,10 +17,8 @@ namespace Ui.MainMenu
         {
             _profilePlayer = profilePlayer;
             _view = LoadView(placeForUi);
-            _view.Init(StartGame, Settings, Inventory);
+            _view.Init(StartGame, Settings, Shed, Reward, Buy);
         }
-
-        private void Inventory() => _profilePlayer.CurrentState.Value = GameState.Inventory; 
 
         private MainMenuView LoadView(Transform placeForUi)
         {
@@ -35,5 +34,74 @@ namespace Ui.MainMenu
 
         private void Settings() =>
             _profilePlayer.CurrentState.Value = GameState.Settings;
+
+        private void Shed() =>
+            _profilePlayer.CurrentState.Value = GameState.Shed;
+
+
+        private void Buy(string productId)
+        {
+            SubscribeIAP();
+            ServiceLocator.IAPService.Buy(productId);
+            //Log("Buy clicked");
+        }
+
+        private void SubscribeIAP()
+        {
+            ServiceLocator.IAPService.PurchaseSucceed.AddListener(OnIAPSucceed);
+            ServiceLocator.IAPService.PurchaseFailed.AddListener(OnIAPFailed);
+        }
+
+        private void UnsubscribeIAP()
+        {
+            ServiceLocator.IAPService.PurchaseSucceed.RemoveListener(OnIAPSucceed);
+            ServiceLocator.IAPService.PurchaseFailed.RemoveListener(OnIAPFailed);
+        }
+
+        private void OnIAPSucceed()
+        {
+            UnsubscribeIAP();
+            //Log("Purchase succeed");
+        }
+
+        private void OnIAPFailed()
+        {
+            UnsubscribeIAP();
+            //Log("Purchase failed");
+        }
+
+
+        private void Reward()
+        {
+            SubscribeRewardedPlayer();
+            ServiceLocator.AdsService.RewardedPlayer.Play();
+            //Log("Reward clicked");
+        }
+
+        private void SubscribeRewardedPlayer()
+        {
+            ServiceLocator.AdsService.RewardedPlayer.Finished += OnAdsFinished;
+            ServiceLocator.AdsService.RewardedPlayer.Failed += OnAdsCancelled;
+            ServiceLocator.AdsService.RewardedPlayer.Skipped += OnAdsCancelled;
+        }
+
+        private void UnsubscribeRewardedPlayer()
+        {
+            ServiceLocator.AdsService.RewardedPlayer.Finished -= OnAdsFinished;
+            ServiceLocator.AdsService.RewardedPlayer.Failed -= OnAdsCancelled;
+            ServiceLocator.AdsService.RewardedPlayer.Skipped -= OnAdsCancelled;
+        }
+
+        private void OnAdsFinished()
+        {
+            UnsubscribeRewardedPlayer();
+            //Log("You've received a reward for ads!");
+        }
+
+        private void OnAdsCancelled()
+        {
+            UnsubscribeRewardedPlayer();
+            //Log("Receiving a reward for ads has been interrupted!");
+        }
     }
 }

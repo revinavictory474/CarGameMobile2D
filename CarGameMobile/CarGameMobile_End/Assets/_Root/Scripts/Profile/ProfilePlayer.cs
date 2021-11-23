@@ -7,20 +7,15 @@ namespace Profile
     internal class ProfilePlayer
     {
         public readonly SubscriptionProperty<GameState> CurrentState;
-        public readonly InventoryModel InventoryModel;
-        public readonly TransportModel CurrentTransportModel;
+        public readonly TransportModel CurrentTransport;
+        public readonly InventoryModel Inventory;
 
 
-        public ProfilePlayer(float speedCar, TransportType carView, GameState initialState) : this(speedCar)
+        public ProfilePlayer(float transportSpeed, TransportType transportType, GameState initialState)
         {
-            CurrentState.Value = initialState;
-            InventoryModel = new InventoryModel();
-            CurrentTransportModel = new TransportModel(speedCar, carView);
-        }
-
-        public ProfilePlayer(float speedCar)
-        {
-            CurrentState = new SubscriptionProperty<GameState>();
+            CurrentState = new SubscriptionProperty<GameState>(initialState);
+            CurrentTransport = new TransportModel(transportSpeed, transportType);
+            Inventory = new InventoryModel();
         }
     }
 }

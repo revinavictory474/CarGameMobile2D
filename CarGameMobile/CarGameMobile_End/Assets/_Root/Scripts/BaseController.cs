@@ -20,6 +20,7 @@ internal abstract class BaseController : IDisposable
         _isDisposed = true;
 
         DisposeBaseControllers();
+        DisposeRepositories();
         DisposeGameObjects();
 
         OnDispose();
