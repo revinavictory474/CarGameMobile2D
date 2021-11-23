@@ -4,7 +4,19 @@ using UnityEngine.Purchasing;
 
 namespace Services.IAP
 {
-    internal class IAPService : MonoBehaviour, IStoreListener
+    internal interface IIAPService : IStoreListener
+    {
+        UnityEvent Initialized { get; }
+        UnityEvent PurchaseSucceed { get; }
+        UnityEvent PurchaseFailed { get; }
+
+
+        void Buy(string id);
+        void RestorePurchases();
+        string GetCost(string productID);
+    }
+
+    internal class IAPService : MonoBehaviour, IIAPService
     {
         [Header("Components")]
         [SerializeField] private ProductLibrary productLibrary;
@@ -31,6 +43,9 @@ namespace Services.IAP
 
             foreach (Product product in productLibrary.Products)
                 builder.AddProduct(product.Id, product.ProductType);
+
+            Log("Products initialized");
+            UnityPurchasing.Initialize(this, builder);
         }
 
         public void OnInitialized(IStoreController controller, IExtensionProvider extensionsProvider)
@@ -71,7 +86,7 @@ namespace Services.IAP
                 return PurchaseProcessingResult.Complete;
             }
 
-            PurchaseSucceed.Invoke();
+            OnPurchaseSucceed(args.purchasedProduct);
             return PurchaseProcessingResult.Complete;
         }
 
@@ -84,6 +99,16 @@ namespace Services.IAP
             PurchaseFailed?.Invoke();
         }
 
+        private void OnPurchaseSucceed(UnityEngine.Purchasing.Product product)
+        {
+            string productId = product.definition.id;
+            decimal amount = (decimal)product.definition.payout.quantity;
+            string currency = product.metadata.isoCurrencyCode;
+            ServiceLocator.Analytics.SendTransaction(productId, amount, currency);
+
+            Log($"Purchased: {productId}");
+            PurchaseSucceed.Invoke();
+        }
 
         public string GetCost(string productID)
         {

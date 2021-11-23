@@ -1,0 +1,27 @@
+using Features.AbilitySystem.Abilities;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Features.AbilitySystem
+{
+    internal interface IAbilitiesRepository : IRepository
+    {
+        IReadOnlyDictionary<string, IAbility> Items { get; }
+    }
+
+    internal class AbilitiesRepository : Repository<string, IAbility, IAbilityItem>, IAbilitiesRepository
+    {
+        public AbilitiesRepository(IEnumerable<IAbilityItem> abilityItems) : base(abilityItems)
+        { }
+
+        protected override string GetKey(IAbilityItem abilityItem) => abilityItem.Id;
+
+        protected override IAbility CreateItem(IAbilityItem abilityItem) =>
+            abilityItem.Type switch
+            {
+                AbilityType.Gun => new GunAbility(abilityItem),
+                _ => StubAbility.Default
+            };
+    }
+}

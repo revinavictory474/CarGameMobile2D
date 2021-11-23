@@ -12,7 +12,7 @@ namespace Features.Inventory
 
         void UnequipItem(string itemId);
 
-        bool isEquipped(string itemId);
+        bool IsEquipped(string itemId);
     }
 
     internal class InventoryModel : IInventoryModel
@@ -22,17 +22,17 @@ namespace Features.Inventory
 
         public void EquipItem(string itemId)
         {
-            if (isEquipped(itemId)) return;
+            if (IsEquipped(itemId)) return;
                 _equippedItems.Add(itemId);
         }
 
         public void UnequipItem(string itemId)
         {
-            if (!isEquipped(itemId)) return;
+            if (!IsEquipped(itemId)) return;
                 _equippedItems.Remove(itemId);
         }
 
-        public bool isEquipped(string itemId) => _equippedItems.Contains(itemId);
+        public bool IsEquipped(string itemId) => _equippedItems.Contains(itemId);
 
     }
 }
