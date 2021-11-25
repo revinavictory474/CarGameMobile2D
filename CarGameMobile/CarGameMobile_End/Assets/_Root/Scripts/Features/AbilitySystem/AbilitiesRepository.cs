@@ -1,7 +1,5 @@
 using Features.AbilitySystem.Abilities;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Features.AbilitySystem
 {
@@ -21,6 +19,7 @@ namespace Features.AbilitySystem
             abilityItem.Type switch
             {
                 AbilityType.Gun => new GunAbility(abilityItem),
+                AbilityType.Jump => new JumpAbility(abilityItem),
                 _ => StubAbility.Default
             };
     }

@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Features.AbilitySystem
 {
     internal interface IAbilityActivator
     {
+        float JumpHeight { get; }
         GameObject ViewGameObject { get; }
     }
 }
