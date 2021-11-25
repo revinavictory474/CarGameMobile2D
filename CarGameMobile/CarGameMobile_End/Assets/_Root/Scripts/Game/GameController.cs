@@ -60,14 +60,15 @@ namespace Game
         private TransportController CreateTransportController()
         {
             TransportController transportController;
+            TransportModel transportModel = _profilePlayer.CurrentTransport;
 
             switch (_profilePlayer.CurrentTransport.Type)
             {
                 case TransportType.Car:
-                    transportController = new CarController();
+                    transportController = new CarController(transportModel);
                     break;
                 case TransportType.Boat:
-                    transportController = new BoatController();
+                    transportController = new BoatController(transportModel);
                     break;
                 default:
                     throw new ArgumentException(nameof(TransportType));

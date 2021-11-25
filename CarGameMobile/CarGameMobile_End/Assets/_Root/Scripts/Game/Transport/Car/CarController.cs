@@ -10,10 +10,10 @@ namespace Game.Transport.Car
 
         public override GameObject ViewGameObject => _view.gameObject;
 
-        public CarController()
-        {
+
+        public CarController(TransportModel model) : base(model) =>
             _view = LoadView();
-        }
+
 
         private CarView LoadView()
         {

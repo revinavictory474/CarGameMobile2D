@@ -105,13 +105,17 @@ namespace Features.Shed
                 _upgradeHandlersRepository.Items);
 
             _profilePlayer.CurrentState.Value = GameState.Start;
-            Log($"Apply. Current Speed: {_profilePlayer.CurrentTransport.Speed}");
+            Log("Apply. " +
+                $"Current Speed: {_profilePlayer.CurrentTransport.Speed}. " +
+                $"Current Jump Height: {_profilePlayer.CurrentTransport.JumpHeight}");
         }
 
         private void Back()
         {
             _profilePlayer.CurrentState.Value = GameState.Start;
-            Log($"Back. Current Speed: {_profilePlayer.CurrentTransport.Speed}");
+            Log("Back. " +
+                $"Current Speed: {_profilePlayer.CurrentTransport.Speed}. " +
+                $"Current Jump Height: {_profilePlayer.CurrentTransport.JumpHeight}");
         }
 
 
