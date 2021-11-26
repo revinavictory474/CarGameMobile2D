@@ -14,86 +14,39 @@ namespace Features.Shed
     internal interface IShedController
     {
     }
-
     internal class ShedController : BaseController, IShedController
     {
-        private readonly ResourcePath _viewPath = new ResourcePath("Prefabs/Shed/ShedView");
-        private readonly ResourcePath _dataSourcePath = new ResourcePath("Configs/Shed/UpgradeItemConfigDataSource");
-
-        private readonly ShedView _view;
+        private readonly IShedView _view;
         private readonly ProfilePlayer _profilePlayer;
-        private readonly InventoryController _inventoryController;
-        private readonly UpgradeHandlersRepository _upgradeHandlersRepository;
+        private readonly IInventoryController _inventoryController;
+        private readonly IUpgradeHandlersRepository _upgradeHandlersRepository;
 
 
         public ShedController(
-            [NotNull] Transform placeForUi,
-            [NotNull] ProfilePlayer profilePlayer)
+            [NotNull] IShedView view,
+            [NotNull] ProfilePlayer profilePlayer,
+            [NotNull] IInventoryController inventoryController,
+            [NotNull] IUpgradeHandlersRepository upgradeHandlersRepository)
         {
-            if (placeForUi == null)
-                throw new ArgumentNullException(nameof(placeForUi));
+            _view
+                = view ?? throw new ArgumentNullException(nameof(view));
 
             _profilePlayer
                 = profilePlayer ?? throw new ArgumentNullException(nameof(profilePlayer));
 
-            _upgradeHandlersRepository = CreateRepository();
-            _inventoryController = CreateInventoryController(placeForUi);
-            _view = LoadView(placeForUi);
+            _inventoryController
+                = inventoryController ?? throw new ArgumentNullException(nameof(inventoryController));
+
+            _upgradeHandlersRepository
+                = upgradeHandlersRepository ?? throw new ArgumentNullException(nameof(upgradeHandlersRepository));
 
             _view.Init(Apply, Back);
         }
 
-
-        private UpgradeHandlersRepository CreateRepository()
+        protected override void OnDispose()
         {
-            UpgradeItemConfig[] upgradeConfigs = ContentDataSourceLoader.LoadUpgradeItemConfigs(_dataSourcePath);
-            var repository = new UpgradeHandlersRepository(upgradeConfigs);
-            AddRepository(repository);
-
-            return repository;
-        }
-
-        private ShedView LoadView(Transform placeForUi)
-        {
-            GameObject prefab = ResourcesLoader.LoadPrefab(_viewPath);
-            GameObject objectView = Object.Instantiate(prefab, placeForUi, false);
-            AddGameObject(objectView);
-
-            return objectView.GetComponent<ShedView>();
-        }
-
-        private InventoryController CreateInventoryController(Transform placeForUi)
-        {
-            IInventoryView inventoryView = LoadInventoryView(placeForUi);
-            IInventoryModel inventoryModel = _profilePlayer.Inventory;
-            IItemsRepository itemsRepository = CreateItemsRepository();
-
-            var inventoryController = new InventoryController(inventoryView, inventoryModel, itemsRepository);
-            AddController(inventoryController);
-
-            return inventoryController;
-        }
-
-        private IInventoryView LoadInventoryView(Transform placeForUi)
-        {
-            var path = new ResourcePath("Prefabs/Inventory/InventoryView");
-
-            GameObject prefab = ResourcesLoader.LoadPrefab(path);
-            GameObject objectView = Object.Instantiate(prefab, placeForUi);
-            AddGameObject(objectView);
-
-            return objectView.GetComponent<InventoryView>();
-        }
-
-        private IItemsRepository CreateItemsRepository()
-        {
-            var path = new ResourcePath("Configs/Inventory/ItemConfigDataSource");
-
-            ItemConfig[] itemConfigs = ContentDataSourceLoader.LoadItemConfigs(path);
-            var repository = new ItemsRepository(itemConfigs);
-            AddRepository(repository);
-
-            return repository;
+            _view.Deinit();
+            base.OnDispose();
         }
 
 
