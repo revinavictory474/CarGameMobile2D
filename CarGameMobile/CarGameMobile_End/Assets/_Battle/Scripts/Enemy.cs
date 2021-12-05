@@ -10,7 +10,10 @@ namespace BattleScripts
     internal class Enemy : IEnemy
     {
         private const float KMoney = 5f;
-        private const float KPower = 1.5f;
+        private const float KHealth = 7f;
+        private const float KPower = 5f;
+        private const float KCrime = 10f;
+        private const float KSummary = 0.2f;
         private const float MaxHealthPlayer = 20;
 
         private readonly string _name;
@@ -18,6 +21,7 @@ namespace BattleScripts
         private int _moneyPlayer;
         private int _healthPlayer;
         private int _powerPlayer;
+        private int _crimePlayer;
 
 
         public Enemy(string name) =>
@@ -39,6 +43,10 @@ namespace BattleScripts
                 case DataType.Power:
                     _powerPlayer = dataPlayer.Value;
                     break;
+
+                case DataType.Crime:
+                    _crimePlayer = dataPlayer.Value;
+                    break;
             }
 
             Debug.Log($"Notified {_name} change to {dataPlayer}");
@@ -46,14 +54,13 @@ namespace BattleScripts
 
         public int CalcPower()
         {
-            int kHealth = CalcKHealth();
             float moneyRatio = _moneyPlayer / KMoney;
+            float healthRatio = _healthPlayer / KHealth;
             float powerRatio = _powerPlayer / KPower;
+            float crimeRatio = _crimePlayer / KCrime;
+            float summaryRatio = moneyRatio + healthRatio + powerRatio + crimeRatio;
 
-            return (int)(moneyRatio + kHealth + powerRatio);
+            return (int)(summaryRatio * KSummary * MaxHealthPlayer);
         }
-
-        private int CalcKHealth() =>
-            _healthPlayer > MaxHealthPlayer ? 100 : 5;
     }
 }

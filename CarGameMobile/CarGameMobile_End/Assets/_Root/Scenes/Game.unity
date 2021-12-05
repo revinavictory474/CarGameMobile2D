@@ -625,7 +625,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1f1f3a311c471e921b56ebcc0f1a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedCar: 0
-  _initialState: 0
-  _transportType: 0
+  _initialProfilePlayer: {fileID: 11400000, guid: a6c4c7cc74b865c4892960228154e842, type: 2}
   _placeForUi: {fileID: 1903552}
