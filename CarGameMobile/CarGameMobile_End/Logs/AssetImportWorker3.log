@@ -9,17 +9,17 @@ E:\Revina\2021.1.5f1\Editor\Unity.exe
 -batchMode
 -noUpm
 -name
-AssetImportWorker0
+AssetImportWorker3
 -projectPath
 D:/UnityEducation/CarGameMobile2D/CarGameMobile/CarGameMobile_End
 -logFile
-Logs/AssetImportWorker0.log
+Logs/AssetImportWorker3.log
 -srvPort
 63897
 Successfully changed project path to: D:/UnityEducation/CarGameMobile2D/CarGameMobile/CarGameMobile_End
 D:/UnityEducation/CarGameMobile2D/CarGameMobile/CarGameMobile_End
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 139.06 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 9836.60 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.1.5f1 (3737af19df53)
 [Subsystems] Discovering subsystems at path E:/Revina/2021.1.5f1/Editor/Data/Resources/UnitySubsystems
@@ -35,16 +35,5 @@ Initialize mono
 Mono path[0] = 'E:/Revina/2021.1.5f1/Editor/Data/Managed'
 Mono path[1] = 'E:/Revina/2021.1.5f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'E:/Revina/2021.1.5f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56972
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56220
 Begin MonoManager ReloadAssembly
-Registering precompiled unity dll's ...
-Register platform support module: E:/Revina/2021.1.5f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.086572 seconds.
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 425.33 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in 24.989 seconds
-Platform modules already initialized, skipping
-Registering precompiled user dll's ...
-Registered in 0.015901 seconds.

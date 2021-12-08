@@ -5,7 +5,9 @@ namespace Profile
         None,
         Start,
         Settings,
+        Rewards,
         Shed,
-        Game
+        Game,
+        Fight
     }
 }
