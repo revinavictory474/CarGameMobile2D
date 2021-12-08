@@ -108,11 +108,11 @@ namespace Game
         private IAbilitiesView LoadAbilitiesView(Transform placeForUi)
         {
             var path = new ResourcePath("Prefabs/Ability/AbilitiesView");
-
+        
             GameObject prefab = ResourcesLoader.LoadPrefab(path);
             GameObject objectView = UnityEngine.Object.Instantiate(prefab, placeForUi, false);
             AddGameObject(objectView);
-
+        
             return objectView.GetComponent<AbilitiesView>();
         }
     }

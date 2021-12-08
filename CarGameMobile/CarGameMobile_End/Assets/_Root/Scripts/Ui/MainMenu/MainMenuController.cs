@@ -8,7 +8,8 @@ namespace Ui.MainMenu
 {
     internal class MainMenuController : BaseController
     {
-        private readonly ResourcePath _resourcePath = new ResourcePath("Prefabs/MainMenu");
+        private readonly ResourcePath _resourcePath =
+            new ResourcePath("Prefabs/MainMenu");
         private readonly ProfilePlayer _profilePlayer;
         private readonly MainMenuView _view;
 
@@ -17,7 +18,7 @@ namespace Ui.MainMenu
         {
             _profilePlayer = profilePlayer;
             _view = LoadView(placeForUi);
-            _view.Init(StartGame, Settings, Shed, Reward, Buy);
+            _view.Init(StartGame, Settings, Rewards, Shed, Reward, Buy, Exit);
         }
 
         private MainMenuView LoadView(Transform placeForUi)
@@ -38,12 +39,20 @@ namespace Ui.MainMenu
         private void Shed() =>
             _profilePlayer.CurrentState.Value = GameState.Shed;
 
+        private void Rewards() =>
+            _profilePlayer.CurrentState.Value = GameState.Rewards;
+
+
+        private void Reward()
+        {
+            SubscribeRewardedPlayer();
+            ServiceLocator.AdsService.RewardedPlayer.Play();
+        }
 
         private void Buy(string productId)
         {
             SubscribeIAP();
             ServiceLocator.IAPService.Buy(productId);
-            //Log("Buy clicked");
         }
 
         private void SubscribeIAP()
@@ -61,22 +70,13 @@ namespace Ui.MainMenu
         private void OnIAPSucceed()
         {
             UnsubscribeIAP();
-            //Log("Purchase succeed");
         }
 
         private void OnIAPFailed()
         {
             UnsubscribeIAP();
-            //Log("Purchase failed");
         }
 
-
-        private void Reward()
-        {
-            SubscribeRewardedPlayer();
-            ServiceLocator.AdsService.RewardedPlayer.Play();
-            //Log("Reward clicked");
-        }
 
         private void SubscribeRewardedPlayer()
         {
@@ -95,13 +95,20 @@ namespace Ui.MainMenu
         private void OnAdsFinished()
         {
             UnsubscribeRewardedPlayer();
-            //Log("You've received a reward for ads!");
         }
 
         private void OnAdsCancelled()
         {
             UnsubscribeRewardedPlayer();
-            //Log("Receiving a reward for ads has been interrupted!");
+        }
+
+        private void Exit()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
     }
 }

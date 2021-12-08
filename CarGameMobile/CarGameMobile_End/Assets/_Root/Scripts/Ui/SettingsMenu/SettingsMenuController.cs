@@ -12,10 +12,10 @@ namespace UI.SettingsMenu
         private readonly ProfilePlayer _profilePlayer;
         private readonly SettingsMenuView _view;
 
-        public SettingsMenuController(Transform plaseFoeUi, ProfilePlayer profilePlayer)
+        public SettingsMenuController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
             _profilePlayer = profilePlayer;
-            _view = LoadView(plaseFoeUi);
+            _view = LoadView(placeForUi);
             _view.Init(Back);
         }
 
