@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6ce247841474f48b38717aa8f3c158, type: 3}
   m_Name: ItemConfigDataSource
   m_EditorClassIdentifier: 
-  _items:
+  _itemConfigs:
   - {fileID: 11400000, guid: b689e3cfc22334443a65f30aa43e2676, type: 2}
   - {fileID: 11400000, guid: cda546e7bb3496e4c867313fe3460c76, type: 2}
   - {fileID: 11400000, guid: f8ddc4ce86bffa745b96344fc5c52105, type: 2}
+  - {fileID: 11400000, guid: ef8523de41e8774418f789a5a92ad2c0, type: 2}
+  - {fileID: 11400000, guid: 594615a15caa8ed4ea4ebc1c10d65c2b, type: 2}

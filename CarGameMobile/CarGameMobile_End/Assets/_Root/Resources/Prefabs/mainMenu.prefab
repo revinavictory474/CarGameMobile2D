@@ -2278,7 +2278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec1ff07dc984d7e90a763a7633ec1dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _productId: 
+  _productId: product_1
   _buttonStart: {fileID: 315532611085353152}
   _buttonSettings: {fileID: 7644957746393378397}
   _buttonRewards: {fileID: 3160345389676843567}

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53d1e3b1971c86149895a6ff9605f444, type: 3}
-  m_Name: ItemConfig
+  m_Name: Pipe
   m_EditorClassIdentifier: 
-  <Id>k__BackingField: body
-  <Title>k__BackingField: Body
-  <Icon>k__BackingField: {fileID: 21300000, guid: 90f91bf07d6aec14bb60e830bf64792c, type: 3}
+  <Id>k__BackingField: pipe
+  <Title>k__BackingField: Pipe
+  <Icon>k__BackingField: {fileID: 391613382322001202, guid: 555975464417842748951a085f3cf3ba, type: 3}
