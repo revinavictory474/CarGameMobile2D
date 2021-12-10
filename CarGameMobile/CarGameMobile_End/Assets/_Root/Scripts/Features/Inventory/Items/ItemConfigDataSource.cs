@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Features.Inventory.Items
 {
-    [CreateAssetMenu(fileName = nameof(ItemConfigDataSource), menuName = "Configs/" + nameof(ItemConfigDataSource))]
+    [CreateAssetMenu(fileName = nameof(ItemConfigDataSource), menuName = "Configs/Inventory/" + nameof(ItemConfigDataSource))]
     internal class ItemConfigDataSource : ScriptableObject
     {
         [SerializeField] private ItemConfig[] _itemConfigs;

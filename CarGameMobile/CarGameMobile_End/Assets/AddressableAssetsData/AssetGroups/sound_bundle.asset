@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: sound_bundle
+  m_EditorClassIdentifier: 
+  m_GroupName: sound_bundle
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 771eecd4961af254e8a736edd6b14c08
+  m_SerializeEntries:
+  - m_GUID: 89ecea74e1f5cda478e5f8e96abe4fa1
+    m_Address: Assets/_Root/Audio/click_button.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e9a764e647dd2dd4c9e602b4b0989836
+    m_Address: Assets/_Root/Audio/music.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: fa2e5666e51483842b87910f7096035f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 6ea5206dc0d053f46aa43c5f7f4701bf, type: 2}
+    - {fileID: 11400000, guid: 873f811cdb995434794f5404324e3c7a, type: 2}

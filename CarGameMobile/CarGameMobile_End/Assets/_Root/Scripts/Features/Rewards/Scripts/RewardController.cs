@@ -12,7 +12,7 @@ namespace Features.Rewards
     internal class RewardController : BaseController
     {
         private readonly ResourcePath _resourcePath = 
-            new ResourcePath("Prefabs/Rewards/RewardsWindow");
+            new ResourcePath("Prefabs/Rewards/DailyRewardsWindow");
         private readonly RewardView _rewardView;
         private readonly ProfilePlayer _profilePlayer;
         private readonly CurrencyController _currencyController;

@@ -1,0 +1,10 @@
+ManifestFileVersion: 0
+CRC: 1390471964
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ui_bundle
+      Dependencies: {}
+    Info_1:
+      Name: button_bundle
+      Dependencies: {}
