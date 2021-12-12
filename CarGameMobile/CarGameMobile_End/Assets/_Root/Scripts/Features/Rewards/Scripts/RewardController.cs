@@ -22,7 +22,7 @@ namespace Features.Rewards
         
         private bool _isGetReward;
 
-        public RewardController(ProfilePlayer profilePlayer, Transform placeForUi)
+        public RewardController(Transform placeForUi, ProfilePlayer profilePlayer)
         {
             _profilePlayer = profilePlayer;
             _rewardView = LoadView(placeForUi);
