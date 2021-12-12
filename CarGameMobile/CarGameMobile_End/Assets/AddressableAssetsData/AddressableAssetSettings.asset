@@ -19,21 +19,43 @@ MonoBehaviour:
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
+  m_CatalogRequestsTimeout: 0
   m_DisableCatalogUpdateOnStart: 0
   m_IgnoreUnsupportedFilesInBuild: 0
   m_UniqueBundleIds: 0
+  m_NonRecursiveBuilding: 1
+  m_CCDEnabled: 0
   m_maxConcurrentWebRequests: 500
   m_ContiguousBundles: 1
+  m_StripUnityVersionFromBundleBuild: 0
+  m_DisableVisibleSubAssetRepresentations: 0
+  m_ShaderBundleNaming: 0
+  m_ShaderBundleCustomNaming: 
+  m_MonoScriptBundleNaming: 0
+  m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
     m_Id: 
   m_RemoteCatalogLoadPath:
     m_Id: 
+  m_ContentStateBuildPath: 
+  m_BuildAddressablesWithPlayerBuild: 2
   m_overridePlayerVersion: 
   m_GroupAssets:
   - {fileID: 11400000, guid: f1838bd6adf42534b881eefb52478cfb, type: 2}
   - {fileID: 11400000, guid: 06fbb6201f4820846ac00ab068904d89, type: 2}
   - {fileID: 11400000, guid: ac5a1727dc1a16d4fa4762f9c5af5eea, type: 2}
   - {fileID: 11400000, guid: 3cd3a250ee5aef74c8c72b6ee239d072, type: 2}
+  - {fileID: 11400000, guid: 089e817af92d56d4b893ee9490af0f8b, type: 2}
+  - {fileID: 11400000, guid: 784e213dbcb6e8b4e8f0f24e5e8c40ad, type: 2}
+  - {fileID: 11400000, guid: 57a7c6d6f6dad60499d94b94996af8bc, type: 2}
+  - {fileID: 11400000, guid: 9c5e837b16865364a9413fb1dcbbddaa, type: 2}
+  - {fileID: 11400000, guid: 0d06642829899514fba7a1035031041f, type: 2}
+  - {fileID: 11400000, guid: 362599681b3b6e544ba2eb52022e6f51, type: 2}
+  - {fileID: 11400000, guid: aec1db41fcb90f44cb2ac975f90011a4, type: 2}
+  - {fileID: 11400000, guid: 2308655c9b12a654c8a21f1ed0ca697a, type: 2}
+  - {fileID: 11400000, guid: f9f59904e7fd8e54f9aa4df5074997f1, type: 2}
+  - {fileID: 11400000, guid: ccd916ea8e005de47885b920b9921a5a, type: 2}
+  - {fileID: 11400000, guid: f76c02943e7999d4d9bd2acd2df25e19, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -75,6 +97,12 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Locale-en
+    - Locale-es
+    - Locale
+    - Preload
+    - Locale-fr
+    - Locale-ru
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: b34ce903c72a1d44c9264ed441f8bd76, type: 2}

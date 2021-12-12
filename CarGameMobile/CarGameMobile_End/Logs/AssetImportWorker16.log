@@ -1,0 +1,19 @@
+Using pre-set license
+Built from '2021.1/staging' branch; Version is '2021.1.5f1 (3737af19df53) revision 3618735'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19042.1348; Version 2009; 64bit' Language: 'ru' Physical Memory: 8149 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+E:\Revina\2021.1.5f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker16
+-projectPath
+D:/UnityEducation/CarGameMobile2D/CarGameMobile/CarGameMobile_End
+-logFile
+Logs/AssetImportWorker16.log
+-srvPort
+54306
+Successfully changed project path to: D:/UnityEducation/CarGameMobile2D/CarGameMobile/CarGameMobile_End
